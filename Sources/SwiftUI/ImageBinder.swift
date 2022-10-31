@@ -87,7 +87,7 @@ extension KFImage {
                         case .success(let value):
                             CallbackQueue.mainCurrentOrAsync.execute {
                                 if let fadeDuration = context.fadeTransitionDuration(cacheType: value.cacheType) {
-                                    let animation = Animation.linear(duration: fadeDuration)
+                                    let animation = Animation.timingCurve(0.37, 0, 0.63, 1, duration: fadeDuration)
                                     withAnimation(animation) { self.loaded = true }
                                 } else {
                                     self.loaded = true
